@@ -42,4 +42,34 @@ function generatePassword() {
     var passNumber = confirm("Would you like numbers?");
     var passSymbol = confirm("Would you like symbols?");
     var userChoices = [];
- 
+ // No choices made will not return a password
+ if (!passUpper && !passLower && !passNumber && !passSymbol) {
+    alert("You must make at least one character type selection! Click 'Generate Password' button to try again.")
+    return null;
+  }
+
+  if (passUpper) {
+      userChoices = userChoices.concat(upperCase);
+  }
+
+  if (passLower) {
+      userChoices = userChoices.concat(lowerCase);
+  }
+
+  if (passNumber) {
+      userChoices = userChoices.concat(numbers);
+  }
+
+  if (passSymbol) {
+      userChoices = userChoices.concat(symbols);
+  }
+
+  for (var i = 0; i < passLength; i++) {
+      var randomNum = Math.floor(Math.random() * userChoices.length);
+      var character = userChoices[randomNum];
+      console.log(character);
+      char.push(character);
+  }
+
+  return char.join("");
+}
